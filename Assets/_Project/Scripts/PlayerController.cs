@@ -6,31 +6,33 @@ public class PlayerController : MonoBehaviour
     public float fuerzaSalto = 10f;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer; 
     private float movimientoHorizontal;
-    private bool enSuelo = true;
+    private bool enSuelo;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
     private void Update()
     {
-    
-        movimientoHorizontal = 0f;
+        // GetAxisRaw da un valor directo (-1, 0 o 1) eliminando la inercia flotante
+        movimientoHorizontal = Input.GetAxisRaw("Horizontal");
 
-  
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        // Giro del sprite
+        if (movimientoHorizontal < 0)
         {
-            movimientoHorizontal = -1f;
+            spriteRenderer.flipX = true;
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        else if (movimientoHorizontal > 0)
         {
-            movimientoHorizontal = 1f;
+            spriteRenderer.flipX = false;
         }
 
-    
-        if (Input.GetKeyDown(KeyCode.Space) && enSuelo)
+        // Salto
+        if (Input.GetButtonDown("Jump") && enSuelo)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
             enSuelo = false;
@@ -39,23 +41,32 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         rb.linearVelocity = new Vector2(movimientoHorizontal * velocidad, rb.linearVelocity.y);
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionStay2D(Collision2D col)
     {
-
-        if (col.gameObject.name == "Suelo")
+        if (col.gameObject.name == "Suelo" || col.gameObject.name.Contains("Plataforma") || col.gameObject.name.Contains("Caja"))
         {
-            enSuelo = true;
+            foreach (ContactPoint2D contacto in col.contacts)
+            {
+                if (contacto.normal.y > 0.5f)
+                {
+                    enSuelo = true;
+                    return;
+                }
+            }
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        enSuelo = false;
     }
 
     private void OnTriggerEnter2D(Collider2D otro)
     {
-
-        if (otro.gameObject.name == "Moneda")
+        if (otro.gameObject.name.Contains("Moneda"))
         {
             Destroy(otro.gameObject);
         }
