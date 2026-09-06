@@ -18,10 +18,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // GetAxisRaw da un valor directo (-1, 0 o 1) eliminando la inercia flotante
+      
         movimientoHorizontal = Input.GetAxisRaw("Horizontal");
 
-        // Giro del sprite
+      
         if (movimientoHorizontal < 0)
         {
             spriteRenderer.flipX = true;
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        // Salto
+    
         if (Input.GetButtonDown("Jump") && enSuelo)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
