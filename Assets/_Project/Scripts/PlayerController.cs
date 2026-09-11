@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay2D(Collision2D col)
     {
         // Chequeamos si colisiona con el suelo, plataformas o cajas
-        if (col.gameObject.name == "Suelo" || col.gameObject.name.Contains("Plataforma") || col.gameObject.name.Contains("Caja"))
+        if (col.gameObject.CompareTag("Suelo")  || col.gameObject.name.Contains("Caja"))
         {
             // Validamos que el contacto sea desde arriba y no desde los lados
             foreach (ContactPoint2D contacto in col.contacts)
@@ -71,13 +71,16 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D col)
     {
         // Cuando deja de tocar la superficie pierde el estado de suelo
-        enSuelo = false;
+        if (col.gameObject.CompareTag("Suelo"))
+        {
+            enSuelo = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D otro)
     {
         // Recoleccion de monedas
-        if (otro.gameObject.name.Contains("Moneda"))
+        if (otro.CompareTag("Coleccionable"))
         {
             Destroy(otro.gameObject);
         }

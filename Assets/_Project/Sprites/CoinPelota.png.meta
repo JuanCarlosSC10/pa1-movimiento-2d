@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c37ab8d3d2b72784b81e3e43021b8742
+guid: 186626b8c4c2ee34c94576b550117b1e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5488370903067918852
-    second: moneda_0
+      213: -7274569455058762874
+    second: CoinPelota_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moneda_0
+      name: CoinPelota_0
       rect:
         serializedVersion: 2
-        x: 89
-        y: 87
-        width: 843
-        height: 806
+        x: 123
+        y: 170
+        width: 230
+        height: 230
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40204f8f14c9a2c40800000000000000
-      internalID: 5488370903067918852
+      spriteID: 683c0597f998b0b90800000000000000
+      internalID: -7274569455058762874
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      moneda_0: 5488370903067918852
+      CoinPelota_0: -7274569455058762874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
