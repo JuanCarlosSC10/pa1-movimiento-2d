@@ -1,11 +1,15 @@
 using UnityEngine;
-
+using TMPro;
 public class PlayerController : MonoBehaviour
 {
     // Ajustes de movimiento desde el inspector
     [Header("Configuración de Movimiento")]
     [SerializeField] private float velocidad = 7f;
     [SerializeField] private float fuerzaSalto = 12f;
+
+    [Header("UI & Marcador")]
+    [SerializeField] private TMP_Text textoContador; // 2. Referencia al texto del marcador
+    private int balonesRecogidos = 0; // Contador interno
 
     // Componentes del player
     private Rigidbody2D rb;
@@ -20,6 +24,12 @@ public class PlayerController : MonoBehaviour
         // Guardamos las referencias al iniciar
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (textoContador != null)
+        {
+            textoContador.text = "0";
+        }
+
     }
 
     private void Update()
@@ -79,10 +89,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D otro)
     {
-        // Recoleccion de monedas
+        // Recoleccion
         if (otro.CompareTag("Coleccionable"))
         {
+            balonesRecogidos++;
+            if (textoContador != null)
+            {
+                textoContador.text = balonesRecogidos.ToString();
+            }
+
             Destroy(otro.gameObject);
+
         }
     }
 }
