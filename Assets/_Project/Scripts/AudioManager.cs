@@ -60,11 +60,15 @@ public class AudioManager : MonoBehaviour
     private void ConfigurarFuentes()
     {
         AudioSource[] sources = GetComponents<AudioSource>();
-        if (sources.Length >= 2)
+
+        while (sources.Length < 2)
         {
-            musicaSource = sources[0];
-            sfxSource = sources[1];
+            gameObject.AddComponent<AudioSource>();
+            sources = GetComponents<AudioSource>();
         }
+
+        musicaSource = sources[0];
+        sfxSource = sources[1];
     }
 
     private void Update()
