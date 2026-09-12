@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 63c0d7bb20499d3458bb090e0cb68602
+guid: c20be7e244a67b84fa8d2df68d1a0d1b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6418019931060533318
-    second: messi (2)_0
+      213: -2910482400712669921
+    second: MessiEmpujar1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 105
+  spritePixelsToUnits: 132
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: messi (2)_0
+      name: MessiEmpujar1_0
       rect:
         serializedVersion: 2
-        x: 30
+        x: 0
         y: 0
-        width: 340
-        height: 370
+        width: 464
+        height: 537
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab782c770ec9ee6a0800000000000000
-      internalID: -6418019931060533318
+      spriteID: f15ce7c4da3eb97d0800000000000000
+      internalID: -2910482400712669921
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      messi (2)_0: -6418019931060533318
+      MessiEmpujar1_0: -2910482400712669921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

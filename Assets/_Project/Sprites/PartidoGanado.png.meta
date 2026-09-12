@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 63c0d7bb20499d3458bb090e0cb68602
+guid: e2ad9f4fa2602704ca179dd9ff48d99a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6418019931060533318
-    second: messi (2)_0
+      213: 3979814344375246694
+    second: PartidoGanado_0
+  - first:
+      213: -3990690003273189226
+    second: PartidoGanado_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 105
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: messi (2)_0
+      name: PartidoGanado_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 0
-        width: 340
-        height: 370
+        x: 8
+        y: 25
+        width: 643
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab782c770ec9ee6a0800000000000000
-      internalID: -6418019931060533318
+      spriteID: 66f9d7c6f042b3730800000000000000
+      internalID: 3979814344375246694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PartidoGanado_1
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 25
+        width: 619
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 698f23ae5983e98c0800000000000000
+      internalID: -3990690003273189226
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      messi (2)_0: -6418019931060533318
+      PartidoGanado_0: 3979814344375246694
+      PartidoGanado_1: -3990690003273189226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
