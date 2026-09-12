@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     {
         get
         {
-            // Si no existe un AudioManager en la escena actual, lo crea automáticamente
+            // Si no existe un AudioManager en la escena actual lo crea automáticamente
             if (_instance == null)
             {
                 _instance = FindObjectOfType<AudioManager>();

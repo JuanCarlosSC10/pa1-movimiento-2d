@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fuerzaSalto = 12f;
 
     [Header("UI & Marcador")]
-    [SerializeField] private TMP_Text textoContador; // Referencia al texto del marcador
-    private int balonesRecogidos = 0; // Contador interno
+    [SerializeField] private TMP_Text textoContador; 
+    private int balonesRecogidos = 0;
     private int totalBalonesEnNivel;
 
     [Header("Sistema de Vidas")]
@@ -24,12 +24,12 @@ public class PlayerController : MonoBehaviour
     // Componentes del player
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    private Animator animator; // Referencia al Animator
+    private Animator animator; 
 
     // Variables de control
     private float movimientoHorizontal;
     [SerializeField] private bool enSuelo;
-    [SerializeField] private bool empujando; // <--- NUEVA VARIABLE DE EMPUJE
+    [SerializeField] private bool empujando; 
 
     private void Start()
     {
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // GetAxisRaw para que el movimiento sea instantaneo y no resbale
+
         movimientoHorizontal = Input.GetAxisRaw("Horizontal");
 
         // Girar el sprite segun hacia donde camina
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
             enSuelo = false;
-            empujando = false; // Al saltar se cancela el empuje
+            empujando = false; 
 
             // Reproducir sonido de salto
             if (AudioManager.Instance != null && AudioManager.Instance.sfxSalto != null)
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // ACTUALIZAR PARÁMETROS DEL ANIMATOR EN CADA FRAME
+     
         ActualizarAnimaciones();
     }
 
@@ -84,23 +84,19 @@ public class PlayerController : MonoBehaviour
     {
         if (animator != null)
         {
-            // Enviamos la velocidad horizontal (Mathf.Abs para que sea siempre positiva)
+
             animator.SetFloat("VelocidadHorizontal", Mathf.Abs(movimientoHorizontal));
 
-            // Enviamos la velocidad vertical del Rigidbody para detectar subida/caída
             animator.SetFloat("VelocidadVertical", rb.linearVelocity.y);
 
-            // Enviamos el estado del suelo
             animator.SetBool("EnSuelo", enSuelo);
 
-            // Enviamos el estado de empujar <--- ENVIAMOS ESTE VALOR AL ANIMATOR
             animator.SetBool("Empujando", empujando);
         }
     }
 
     private void FixedUpdate()
     {
-        // Aplicamos el movimiento horizontal en las fisicas
         rb.linearVelocity = new Vector2(movimientoHorizontal * velocidad, rb.linearVelocity.y);
     }
 
@@ -118,7 +114,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // 2. DETECTAR SI ESTÁ EMPUJANDO LA CAJA LATERALMENTE
         if (col.gameObject.name.Contains("Caja") || col.gameObject.CompareTag("Caja"))
         {
             foreach (ContactPoint2D contacto in col.contacts)
@@ -132,7 +127,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Si toca la caja pero no se está moviendo contra ella, deja de empujar
         empujando = false;
     }
 
@@ -144,7 +138,7 @@ public class PlayerController : MonoBehaviour
             enSuelo = false;
         }
 
-        // AL SEPARARSE DE LA CAJA: apaga la animación de empuje inmediatamente
+        // apaga la animación de empuje inmediatamente cuando no hay acercamiento a ello
         if (col.gameObject.name.Contains("Caja") || col.gameObject.CompareTag("Caja"))
         {
             empujando = false;
@@ -153,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D otro)
     {
-        // Recoleccion de balones/puntos
+        // Recoleccion de balones
         if (otro.CompareTag("Coleccionable"))
         {
             balonesRecogidos++;
@@ -162,7 +156,7 @@ public class PlayerController : MonoBehaviour
                 textoContador.text = balonesRecogidos.ToString();
             }
 
-            // Reproducir sonido de coleccionable (pelota)
+            // Reproducir sonido de coleccionable 
             if (AudioManager.Instance != null && AudioManager.Instance.sfxColeccionable != null)
             {
                 AudioManager.Instance.ReproducirSFX(AudioManager.Instance.sfxColeccionable);
@@ -175,7 +169,7 @@ public class PlayerController : MonoBehaviour
                 GanarPartido();
             }
         }
-        // Impacto con obstáculos (conos, tarjetas rojas, etc.)
+        // Impacto con obstáculos los conos, tarjeta rojas
         else if (otro.CompareTag("Peligro"))
         {
             RecibirDano(1);
@@ -188,7 +182,7 @@ public class PlayerController : MonoBehaviour
         vidaActual -= cantidad;
         if (vidaActual < 0) vidaActual = 0;
 
-        // Reproducir sonido de daño/pérdida de vida
+        // Reproducir sonido de daño
         if (AudioManager.Instance != null && AudioManager.Instance.sfxDano != null)
         {
             AudioManager.Instance.ReproducirSFX(AudioManager.Instance.sfxDano);

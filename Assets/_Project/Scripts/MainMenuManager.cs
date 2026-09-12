@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // Variable estática que recuerda si venimos de una derrota o victoria en el nivel
+ 
     public static bool irAGameOverDirecto = false;
     public static bool irAVictoriaDirecto = false;
 
@@ -17,13 +17,13 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
-        // Prioridad 1: Si ganó el partido
+        //  Si ganó el partido
         if (irAVictoriaDirecto)
         {
             MostrarVictoria();
-            irAVictoriaDirecto = false; // Reseteamos la variable
+            irAVictoriaDirecto = false; 
 
-            // Reproduce sonido/música de victoria si está asignado
+            // Reproduce sonido de victoria
             if (AudioManager.Instance != null && AudioManager.Instance.sfxVictoria != null)
             {
                 AudioManager.Instance.ReproducirSFX(AudioManager.Instance.sfxVictoria);
@@ -32,9 +32,9 @@ public class MainMenuManager : MonoBehaviour
         else if (irAGameOverDirecto)
         {
             MostrarGameOver();
-            irAGameOverDirecto = false; // Reseteamos la variable para futuras cargas
+            irAGameOverDirecto = false;
 
-            // Reproduce sonido/música de derrota si está asignado
+            // Reproduce sonido de derrota 
             if (AudioManager.Instance != null && AudioManager.Instance.sfxDerrota != null)
             {
                 AudioManager.Instance.ReproducirSFX(AudioManager.Instance.sfxDerrota);
@@ -96,17 +96,17 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    // Método auxiliar para detener la música del menú o cambiar a la del nivel
+    // detener la música del menú 
     private void ManejarMusicaAlEntrarAlJuego()
     {
         if (AudioManager.Instance != null)
         {
-            // Si asignaste una canción para el nivel en el AudioManager, la reproduce
+         
             if (AudioManager.Instance.musicaNivel != null)
             {
                 AudioManager.Instance.ReproducirMusica(AudioManager.Instance.musicaNivel);
             }
-            // Si no hay música de nivel, simplemente detiene la música del menú
+        
             else if (AudioManager.Instance.musicaSource != null)
             {
                 AudioManager.Instance.musicaSource.Stop();
